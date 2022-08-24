@@ -82,8 +82,10 @@
     {#each $nodesStore as node}
       {#if node.image && !node.data.label}
         <ImageNode {node} {key} />
+      {:else if node.data.label_type == 'HTML'}
+        {@html node.data.label}
       {:else}
-        <Node {node} {key}>{node.data.label}</Node>
+        {node.data.label}
       {/if}
     {/each}
   </div>
